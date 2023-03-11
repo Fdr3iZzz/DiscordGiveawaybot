@@ -5,6 +5,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.restaction.RoleAction;
@@ -20,6 +21,7 @@ public class GiveawayBot {
     private final ShardManager shardManager;
     private final String guildID;
 
+
     public GiveawayBot() throws LoginException{
         config = Dotenv.configure().load();
         String botToken =config.get("TOKEN");
@@ -27,30 +29,11 @@ public class GiveawayBot {
         builder.setActivity(Activity.competing("Rocket League"));
         shardManager = builder.build();
         guildID = "788844871942144000";
-        Guild guild = shardManager.getGuildById("guildID");
-        // create commands
-        try{
-            guild.updateCommands().addCommands(
-                    Commands.slash("help", "get help and learn how to use the bot and what features it has"),
-                    Commands.slash("add", "add tokens to a user")
-                            .addOption(OptionType.USER, "name", "name of the targeted user", true)
-                            .addOption(OptionType.INTEGER, "number", "number of tokens you want to add", true),
-                    Commands.slash("remove", "remove tokens from a user")
-                            .addOption(OptionType.USER, "name", "name of the targeted user", true)
-                            .addOption(OptionType.INTEGER, "number", "number of tokens you want to remove", true),
-                    Commands.slash("set", "set tokens of a user")
-                            .addOption(OptionType.USER, "name", "name of the targeted user", true)
-                            .addOption(OptionType.INTEGER, "number", "number of tokens you want to set", true),
-                    Commands.slash("tokens", "displays tokens of user")
-                            .addOption(OptionType.USER, "name", "name of the targeted user"),
-                    Commands.slash("role", "define who can participate in the giveaways")
-                            .addOption(OptionType.USER, "name", "name of the targeted user", true)
-            ).queue();
-        }catch (NullPointerException exception){
-            System.out.println("guild id is wrong");
-        }
+    }
+    public void onReady(ReadyEvent event) {
+        Guild guild = shardManager.getGuildById(guildID);
         // add listener
-        shardManager.addEventListener(new SlashCommand(), guildID);
+        shardManager.addEventListener(new SlashCommand());
         // create role if not existing
         Role role = guild.getRolesByName("Game Participants", true).stream().findFirst().orElse(null);
         if(role == null){
