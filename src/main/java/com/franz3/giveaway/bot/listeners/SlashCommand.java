@@ -1,5 +1,7 @@
 package com.franz3.giveaway.bot.listeners;
 
+import com.franz3.giveaway.bot.Main;
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
@@ -9,14 +11,14 @@ import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.CommandData;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
-import net.dv8tion.jda.api.sharding.ShardManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SlashCommand extends ListenerAdapter {
-
+    JDA jda = Main.getJDA();
+    Guild guild = jda.getGuildById(Main.getGuildID());
     @Override
     public void onSlashCommandInteraction (SlashCommandInteractionEvent event) {
         // ShardManager shardManager = getShardManager();
@@ -45,7 +47,9 @@ public class SlashCommand extends ListenerAdapter {
 
         } else if (command.equals("role")){
             if (event.getMember().hasPermission(Permission.ADMINISTRATOR)){
-                //guild.addRoleToMember(event.getOption("name").getAsMember(), guild.getRolesByName("Game Participants", true).stream().findFirst().orElse(null)).queue();
+                event.deferReply().queue();
+                guild.addRoleToMember(event.getOption("name").getAsMember(), guild.getRolesByName("Game Participants", true).stream().findFirst().orElse(null)).queue();
+                event.getHook().sendMessage(event.getMember().getEffectiveName() + " added to the Game Participants").setEphemeral(true).queue();
             }else {
                 event.reply("You lack perms").queue();
             }
