@@ -6,9 +6,14 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.interactions.commands.OptionType;
+import net.dv8tion.jda.api.interactions.commands.build.CommandData;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.restaction.RoleAction;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OnReady extends ListenerAdapter {
     @Override
@@ -17,6 +22,7 @@ public class OnReady extends ListenerAdapter {
         Guild guild = jda.getGuildById(Main.getGuildID());
         // add listener
         jda.addEventListener(new SlashCommand());
+        jda.addEventListener(new ButtonInteraction());
         // create role if not existing
         Role gameParticipantsRole = guild.getRolesByName("Game Participants", true).stream().findFirst().orElse(null);
         if (gameParticipantsRole == null) {
@@ -28,5 +34,25 @@ public class OnReady extends ListenerAdapter {
 
                     });
         }
+        // register commands
+        List<CommandData> commandData = new ArrayList<>();
+        commandData.add(Commands.slash("help", "get help and learn how to use the bot and what features it has"));
+        commandData.add(Commands.slash("add", "add tokens to a user")
+                .addOption(OptionType.USER, "name", "name of the targeted user", true)
+                .addOption(OptionType.INTEGER, "number", "number of tokens you want to add", true));
+        commandData.add(Commands.slash("remove", "remove tokens from a user")
+                .addOption(OptionType.USER, "name", "name of the targeted user", true)
+                .addOption(OptionType.INTEGER, "number", "number of tokens you want to remove", true));
+        commandData.add(Commands.slash("set", "set tokens of a user")
+                .addOption(OptionType.USER, "name", "name of the targeted user", true)
+                .addOption(OptionType.INTEGER, "number", "number of tokens you want to set", true));
+        commandData.add(Commands.slash("tokens", "displays tokens of user")
+                .addOption(OptionType.USER, "name", "name of the targeted user"));
+        commandData.add(Commands.slash("role", "define who can participate in the giveaways")
+                .addOption(OptionType.USER, "name", "name of the targeted user", true));
+        commandData.add(Commands.slash("giveaway", "create the giveaway")
+                .addOption(OptionType.STRING, "message", "input the text you wish to have for the giveaway-message", true));
+        commandData.add(Commands.slash("draw", "ends the giveaway"));
+        event.getJDA().updateCommands().addCommands(commandData).queue();
     }
 }

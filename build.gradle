@@ -21,6 +21,7 @@ dependencies {
     implementation("net.dv8tion:JDA:$jdaVersion")
     implementation("ch.qos.logback:logback-classic:1.2.8")
     implementation 'io.github.cdimascio:dotenv-java:2.3.2'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.5.1'
 }
 compileJava.options.encoding = 'UTF-8'
 
