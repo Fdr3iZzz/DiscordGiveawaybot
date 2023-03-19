@@ -53,6 +53,7 @@ public class OnReady extends ListenerAdapter {
         commandData.add(Commands.slash("giveaway", "create the giveaway")
                 .addOption(OptionType.STRING, "message", "input the text you wish to have for the giveaway-message", true));
         commandData.add(Commands.slash("draw", "ends the giveaway"));
+        commandData.add(Commands.slash("redraw", "redraw if winner is wrong"));
         event.getJDA().updateCommands().addCommands(commandData).queue();
     }
 }

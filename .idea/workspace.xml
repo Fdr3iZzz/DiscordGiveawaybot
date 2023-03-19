@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f56b609a-3294-4b5c-b69e-6cc3e9390645" name="Changes" comment="role working">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/giveaway/Giveaway.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/giveaway/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/listeners/ButtonInteraction.java" afterDir="false" />
+    <list default="true" id="f56b609a-3294-4b5c-b69e-6cc3e9390645" name="Changes" comment="sends giveaway message&#10;perms managed&#10;button working&#10;Todo:&#10;- Store Tokens&#10;- Hook up commands to database&#10;- create giveaway mechanic&#10;- redraw option">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/giveaway/Database.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/giveaway/Giveaway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/giveaway/Giveaway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/giveaway/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/giveaway/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/listeners/ButtonInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/listeners/ButtonInteraction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/listeners/OnReady.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/listeners/OnReady.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/listeners/SlashCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/franz3/giveaway/bot/listeners/SlashCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/.env.example" afterDir="false" />
@@ -158,12 +158,25 @@
       <option name="project" value="LOCAL" />
       <updated>1678815988813</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="sends giveaway message&#10;perms managed&#10;button working&#10;Todo:&#10;- Store Tokens&#10;- Hook up commands to database&#10;- create giveaway mechanic&#10;- redraw option">
+      <created>1678920599548</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678920599548</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="using shardManager now&#10;attempt to make thing cleaner" />
     <MESSAGE value="role working" />
-    <option name="LAST_COMMIT_MESSAGE" value="role working" />
+    <MESSAGE value="sends giveaway message&#10;perms managed&#10;button working&#10;Todo:&#10;- Store Tokens&#10;- Hook up commands to database&#10;- create giveaway mechanic&#10;- redraw option" />
+    <option name="LAST_COMMIT_MESSAGE" value="sends giveaway message&#10;perms managed&#10;button working&#10;Todo:&#10;- Store Tokens&#10;- Hook up commands to database&#10;- create giveaway mechanic&#10;- redraw option" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Giveawaybot$Main.ic" NAME="Main Coverage Results" MODIFIED="1679156990812" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.franz3.giveaway.bot.*</FILTER>
+    </SUITE>
   </component>
 </project>

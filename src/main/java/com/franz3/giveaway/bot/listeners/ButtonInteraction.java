@@ -11,13 +11,14 @@ public class ButtonInteraction extends ListenerAdapter {
     public void onButtonInteraction(@NotNull ButtonInteractionEvent event) {
         if (event.getComponentId().equals("enterGiveaway")){
             if (hasRole(event.getMember())){
-                // EVENT HERE
+                // EVENT HERE (add to database)
                 event.reply("Success").queue();
             } else {
                 event.reply("You lack perms").setEphemeral(true).queue();
             }
         }
     }
+    // helper method
     public boolean hasRole(Member member) {
         for (Role role : member.getRoles()){
             if (role.getName().equalsIgnoreCase("Game Participants")){
